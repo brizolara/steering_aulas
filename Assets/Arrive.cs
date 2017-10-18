@@ -28,7 +28,7 @@ public class Arrive : MonoBehaviour {
 
 		if(distancia < distancia_arrive)
 		{
-			Vector2 v_desejada = 0.5f * direcao_norm * distancia * GetComponent<seek_and_flee>().max_vel / distancia_arrive;
+			Vector2 v_desejada = direcao_norm * distancia * GetComponent<seek_and_flee>().max_vel / distancia_arrive;
 
 			Debug.Log(v_desejada);
 
