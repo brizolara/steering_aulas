@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{6F7E1B0A-C080-4F4D-D00F-2D71956D69C5}</ProjectGuid>
+    <ProjectGuid>{62CE1B56-4A91-4ABC-9A24-EE30207D4845}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -51,9 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\seek_and_flee.cs" />
+     <Compile Include="Assets\Arrive.cs" />
+     <Compile Include="Assets\scripts\seek_and_flee.cs" />
  <Reference Include="Facebook.Unity.Settings">
- <HintPath>C:/Users/Tiago/Documents/POS_BACKUP/disciplinas_fatenp_2017_2/inteligencia_artificial/teste_seek/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ <HintPath>C:/Users/Tiago/Documents/POS_BACKUP/disciplinas_fatenp_2017_2/inteligencia_artificial/steering_aulas/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
