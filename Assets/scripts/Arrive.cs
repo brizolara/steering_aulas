@@ -2,43 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class seek_and_flee : MonoBehaviour {
+public class Arrive : MonoBehaviour {
 
-	public float max_vel;
-	public bool seek;
+	public float distancia_arrive = 3.0f;
 
 	// Use this for initialization
 	void Start () {
-		max_vel = 5.0f;
-		seek = true;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//Debug.Log(GetComponent<seek_and_flee>().);
 		Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f));
 		//transform.position = new Vector2(mouseWorld.x, mouseWorld.y);
 
 		//	aponta do agente para o mouse
 		Vector2 direcaoDesejada = mouseWorld - (Vector2)transform.position;
-
-		if(seek == false) {
-			direcaoDesejada *= -1.0f;
-		}
+		//direcaoDesejada *= -1.0f;
 
 		//	passando para modulo (tamanho) 1
 		Vector2 direcao_norm = direcaoDesejada.normalized;
 
 		float distancia = direcaoDesejada.magnitude;
 
-		/*if(distancia > GetComponent<Arrive>().distancia_arrive)
-		{*/
-			//	multiplicando pelo tamanho desejado
-			Vector2 v_desejada = max_vel * direcao_norm;
+		if(distancia < distancia_arrive)
+		{
+			Vector2 v_desejada = direcao_norm * distancia * GetComponent<seek_and_flee>().max_vel / distancia_arrive;
+
+			Debug.Log(v_desejada);
 
 			//	STEER = V_DESEJADA - V_ATUAL
-			Vector2 steer = v_desejada - GetComponent<Rigidbody2D>().velocity; 
+			Vector2 steer = v_desejada - GetComponent<Rigidbody2D>().velocity;
 
 			GetComponent<Rigidbody2D>().AddForce( steer );
-		/*}*/
+		}
+		else
+		{
+			Vector2 v_desejada = direcao_norm * GetComponent<seek_and_flee>().max_vel;
+
+			Debug.Log(v_desejada);
+
+			//	STEER = V_DESEJADA - V_ATUAL
+			Vector2 steer = v_desejada - GetComponent<Rigidbody2D>().velocity;
+
+			GetComponent<Rigidbody2D>().AddForce( steer );
+		}
 	}
+		
 }

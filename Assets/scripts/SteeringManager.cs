@@ -4,28 +4,22 @@ using UnityEngine;
 
 public class SteeringManager : MonoBehaviour {
 
-	public float vmax = 5.0f;
-	public Vector2 lineStart = new Vector2(-0.0681f, 0.002f);
-	public Vector2 lineEnd = new Vector2(0.065f, -0.005f);
+	public float vmax;
+	public float fmax;
 
 	// Use this for initialization
 	void Start () {
-		
+		vmax = 4.0f;
+		fmax = 0.75f;
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-		float d = calcDistanceToLine(
-			new Vector2(transform.position.x, transform.position.y), 
-			lineStart, 
-			lineEnd);
 
-		Debug.Log(lineStart.y + " " + transform.position.y + " " + lineEnd.y);
-		Debug.Log("Distance = " + d);
 	}
 
-	float calcDistanceToLine(Vector2 point, Vector2 lineStart, Vector2 lineEnd)
+	public Vector2 pointToProjection_vector(Vector2 point, Vector2 lineStart, Vector2 lineEnd)
 	{
 		//	Vetor que vai de start a point
 		Vector2 startToPoint = point - lineStart;
@@ -41,8 +35,24 @@ public class SteeringManager : MonoBehaviour {
 		Vector2 projPointInLine = new Vector2(aux_projPointInLine.x, aux_projPointInLine.y);
 
 		//	Calculamos atraves do triangulo formado pelos 3 vetores
-		Vector2 pointToProjection = startToPoint - projPointInLine;
+		Vector2 pointToProjection = projPointInLine - startToPoint;
 
-		return pointToProjection.magnitude;
+		return pointToProjection;
+	}
+
+	public Vector2 pointToProjection_vector_advanced(Vector2 point, Vector2 lineStart, Vector2 lineEnd, float avanco)
+	{
+		Vector2 startToEnd = lineEnd - lineStart;
+		startToEnd.Normalize();
+		startToEnd = startToEnd * avanco;
+
+		Vector2 poinToProjection = pointToProjection_vector(point, lineStart, lineEnd);
+
+		return poinToProjection + startToEnd;
+	}
+
+	public float calcDistanceToLine(Vector2 point, Vector2 lineStart, Vector2 lineEnd)
+	{
+		return pointToProjection_vector(point, lineStart, lineEnd).magnitude;
 	}
 }
