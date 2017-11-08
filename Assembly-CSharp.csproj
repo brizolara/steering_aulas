@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\scripts\Arrive.cs" />
+     <Compile Include="Assets\scripts\Path.cs" />
      <Compile Include="Assets\scripts\PathFollow.cs" />
      <Compile Include="Assets\scripts\seek_and_flee.cs" />
      <Compile Include="Assets\scripts\SteeringManager.cs" />

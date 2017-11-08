@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SteeringManager : MonoBehaviour {
 
-	public float vmax;
-	public float fmax;
+	public float vmax = 4.0f;
+	public float fmax = 2.0f;
 
 	// Use this for initialization
 	void Start () {
-		vmax = 4.0f;
-		fmax = 0.75f;
+		//vmax = 4.0f;
+		//fmax = 2.0f;
 	}
 
 	// Update is called once per frame

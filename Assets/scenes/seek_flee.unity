@@ -339,6 +339,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1664986809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1664986811}
+  - component: {fileID: 1664986810}
+  m_Layer: 0
+  m_Name: Path
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1664986810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1664986809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520ffe592cf141a41a73b85363e5ec42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPoints:
+  - {fileID: 1813549370}
+  - {fileID: 2109947679}
+  - {fileID: 876245425}
+  - {fileID: 1268232923}
+--- !u!4 &1664986811
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1664986809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15352634, y: 0.82187915, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1813549370
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd553802e8c5124ca82c714f907451f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_vel: 5
   seek: 0
 --- !u!212 &2011000789
 SpriteRenderer:
@@ -542,15 +586,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7bd80a1ea29e246b8dd380d2c41348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vmax: 5
-  fmax: 0
+  vmax: 4
+  fmax: 2
 --- !u!114 &2011000793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2011000786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd7ed407284a831449c40c8aa447efaa, type: 3}
   m_Name: 

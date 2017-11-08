@@ -28,23 +28,29 @@ public class Arrive : MonoBehaviour {
 
 		if(distancia < distancia_arrive)
 		{
-			Vector2 v_desejada = direcao_norm * distancia * GetComponent<seek_and_flee>().max_vel / distancia_arrive;
+			Vector2 v_desejada = direcao_norm * distancia * GetComponent<SteeringManager>().vmax / distancia_arrive;
 
 			Debug.Log(v_desejada);
 
 			//	STEER = V_DESEJADA - V_ATUAL
 			Vector2 steer = v_desejada - GetComponent<Rigidbody2D>().velocity;
+
+			//	nao deixamos a forca passar de fmax
+			steer = Vector2.ClampMagnitude(steer, GetComponent<SteeringManager>().fmax);
 
 			GetComponent<Rigidbody2D>().AddForce( steer );
 		}
 		else
 		{
-			Vector2 v_desejada = direcao_norm * GetComponent<seek_and_flee>().max_vel;
+			Vector2 v_desejada = direcao_norm * GetComponent<SteeringManager>().vmax;
 
 			Debug.Log(v_desejada);
 
 			//	STEER = V_DESEJADA - V_ATUAL
 			Vector2 steer = v_desejada - GetComponent<Rigidbody2D>().velocity;
+
+			//	nao deixamos a forca passar de fmax
+			steer = Vector2.ClampMagnitude(steer, GetComponent<SteeringManager>().fmax);
 
 			GetComponent<Rigidbody2D>().AddForce( steer );
 		}

@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class seek_and_flee : MonoBehaviour {
 
-	public float max_vel;
 	public bool seek;
 
 	// Use this for initialization
 	void Start () {
-		max_vel = 5.0f;
 		seek = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f));
-		//transform.position = new Vector2(mouseWorld.x, mouseWorld.y);
 
 		//	aponta do agente para o mouse
 		Vector2 direcaoDesejada = mouseWorld - (Vector2)transform.position;
@@ -33,10 +30,13 @@ public class seek_and_flee : MonoBehaviour {
 		/*if(distancia > GetComponent<Arrive>().distancia_arrive)
 		{*/
 			//	multiplicando pelo tamanho desejado
-			Vector2 v_desejada = max_vel * direcao_norm;
+			Vector2 v_desejada = GetComponent<SteeringManager>().vmax * direcao_norm;
 
 			//	STEER = V_DESEJADA - V_ATUAL
 			Vector2 steer = v_desejada - GetComponent<Rigidbody2D>().velocity; 
+
+			//	nao deixamos a forca passar de fmax
+			steer = Vector2.ClampMagnitude(steer, GetComponent<SteeringManager>().fmax);
 
 			GetComponent<Rigidbody2D>().AddForce( steer );
 		/*}*/

@@ -56,6 +56,7 @@ public class PathFollow : MonoBehaviour {
 			//	STEER = V_DESEJADA - V_ATUAL
 			Vector2 steer = v_desejada - GetComponent<Rigidbody2D>().velocity; 
 
+			//	nao deixamos a forca passar de fmax
 			steer = Vector2.ClampMagnitude(steer, GetComponent<SteeringManager>().fmax);
 
 			GetComponent<Rigidbody2D>().AddForce( steer );
