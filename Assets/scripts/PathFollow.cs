@@ -21,12 +21,11 @@ public class PathFollow : MonoBehaviour {
 		waypointArrivalDistance = 2.5f;
 		startIndex = 0;
 
-		//	FIXME - esta hard-coded. Usar de waypoints da cena
-		waypoints = new List<Vector2>(){
-			new Vector2(-6.0f, 3.0f),
-			new Vector2(1.5f, 3.5f),
-			new Vector2(3.5f, -2.0f),
-			new Vector2(-4.5f, -1.0f)};
+		//	Pegando a lista de waypoints da cena
+		List<GameObject> scene_waypoints = GameObject.Find("Path").GetComponent<Path>().wayPoints;
+		for(int i=0; i<scene_waypoints.Count; i++) {
+			waypoints.Add(new Vector2(scene_waypoints[i].transform.position.x, scene_waypoints[i].transform.position.y));
+		}
 
 		lineStart = waypoints[0];
 		lineEnd = waypoints[1];
